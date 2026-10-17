@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mollah Adib Aktab</title>
+<meta name="description" content="Mollah Adib Aktab, biomedical engineer working on computational biomechanics, finite element analysis and CFD. BUET graduate seeking a PhD position.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@400;700&display=swap">
+<style>
+/* Layout: yellow header band, white page, one 68rem column; charcoal footer and photo gallery. */
+:root{
+  --bg:#ffffff; --soft:#fafaf7; --surface:#ffffff; --ink:#222222; --muted:#5f5f5f; --line:#e6e3d8;
+  --yellow:#f6c324; --yellow-deep:#c99700; --yellow-soft:#fff7dc; --dark:#262626; --dark-2:#333333;
+  --good:#2e7d32; --bad:#c62828;
+  --head:"Merriweather", Georgia, "Times New Roman", serif;
+  --body:"Lato", "Segoe UI", Helvetica, Arial, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.06rem;line-height:1.7}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--yellow)}
+a{color:#7a5c00;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:.18em}
+a:hover{color:var(--ink);background:var(--yellow-soft)}
+:focus-visible{outline:2px solid var(--yellow-deep);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.3;margin:0;font-weight:700;text-wrap:balance}
+p{margin:0}
+img{max-width:100%}
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.read{max-width:44rem}
+.stack{display:flex;flex-direction:column;gap:1rem}
+.muted{color:var(--muted)}
+.mono{font-variant-numeric:tabular-nums}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--yellow);border-bottom:1px solid var(--yellow-deep)}
+.top .wrap{display:flex;align-items:center;gap:1.4rem;padding-block:.8rem}
+.logo{color:var(--ink);text-decoration:none;white-space:nowrap;font-family:var(--head);font-weight:700;font-size:1.1rem}
+.logo:hover{background:none}
+.tabs{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs ul{display:flex;gap:1.3rem;list-style:none;margin:0 0 0 auto;padding:0;width:max-content}
+.tabs a{display:block;padding:.25rem 0;color:var(--ink);text-decoration:none;font-size:.97rem;white-space:nowrap;border-bottom:2px solid transparent}
+.tabs a:hover{background:none;border-bottom-color:var(--ink)}
+.tabs a[aria-current="page"]{font-weight:700;border-bottom-color:var(--ink)}
+
+/* pages */
+.page{padding-block:3rem 4rem}
+.js .page{display:none}
+.js .page.on{display:block}
+.pagehead{margin-bottom:2.2rem;padding-bottom:1rem;border-bottom:3px solid var(--yellow)}
+.pagehead h1{font-size:clamp(1.9rem,4vw,2.5rem)}
+.pagehead p{margin-top:.5rem;color:var(--muted);max-width:44rem}
+h2{font-size:1.55rem}
+h3{font-size:1.2rem}
+h4{font-family:var(--body);font-size:1rem;font-weight:700;color:var(--ink)}
+
+/* home */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:3rem;align-items:start}
+.hero h1{font-size:clamp(2.1rem,5vw,3rem)}
+.tagline{font-size:1.12rem;color:var(--muted);margin-top:.5rem}
+.tagline b{color:var(--ink)}
+.bio{margin-top:1.5rem;display:flex;flex-direction:column;gap:.9rem}
+.seeking{display:inline-block;margin-top:1.4rem;padding:.4rem .8rem;background:var(--yellow-soft);border-left:4px solid var(--yellow);font-weight:700}
+.portrait{max-width:24rem;justify-self:end;width:100%}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:6px;border:6px solid var(--yellow)}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.btn{display:inline-block;padding:.5rem 1rem;border-radius:4px;border:1px solid #cfcab9;background:#fff;color:var(--ink);font:700 .95rem var(--body);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--yellow-soft);border-color:var(--yellow-deep);color:var(--ink)}
+.btn.go{background:var(--yellow);border-color:var(--yellow-deep);color:var(--ink)}
+.btn.go:hover{background:#ffd54a}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:3rem;padding:1.3rem 1.4rem;background:var(--soft);border-top:3px solid var(--yellow)}
+.facts dt{font-size:.85rem;color:var(--muted)}
+.facts dd{margin:.15rem 0 0;font-weight:700;line-height:1.4}
+.chips{margin:.6rem 0 0;padding-left:1.2rem;columns:2;column-gap:2rem}
+.chip{display:list-item}
+.homegrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:2.5rem;margin-top:2.8rem}
+.feat{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;margin-top:.8rem}
+.fcard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);background:#fff}
+.fcard:hover{border-color:var(--yellow-deep);background:#fff}
+.fcard .ph{aspect-ratio:4/3;background:#fff;overflow:hidden}
+.fcard .ph img{width:100%;height:100%;object-fit:cover}
+.fcard .tx{padding:.7rem .85rem .9rem;display:flex;flex-direction:column;gap:.15rem;border-top:3px solid var(--yellow)}
+.fcard .tx b{font-size:1rem;line-height:1.3}
+.fcard .tx span{font-size:.87rem;color:var(--muted)}
+.news{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+.news li{display:grid;grid-template-columns:5rem minmax(0,1fr);gap:.7rem;font-size:.97rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+.news time{font-weight:700;color:var(--yellow-deep);font-size:.9rem}
+
+/* blocks */
+.card{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1.4rem}
+.subnav{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;margin-bottom:2rem;font-size:.97rem}
+.subnav a{font-weight:700}
+.block{padding-block:2.4rem;border-top:1px solid var(--line)}
+.block:first-of-type{border-top:0;padding-top:0}
+.blockhead{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.4rem}
+.tagrow{display:flex;flex-wrap:wrap;gap:.4rem;font-size:.85rem;color:var(--muted)}
+.tag{padding:.05rem .5rem;border-radius:3px;background:#f1efe8;color:#4a4a4a;font-size:.82rem}
+.tag.hot{background:var(--yellow);color:var(--ink);font-weight:700}
+.meta{color:var(--muted);font-size:.97rem}
+.lead{font-size:1.08rem}
+.sub{margin-top:2rem;margin-bottom:.8rem;font-size:1.15rem}
+ul.pts{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#fff;cursor:zoom-in}
+figcaption{font-size:.87rem;color:var(--muted);margin-top:.4rem;line-height:1.5}
+figcaption b{color:var(--ink)}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem;align-items:start}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;align-items:start}
+.gw{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.4rem;align-items:start}
+.gw.rev{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+.gw>*,.g2>*,.g3>*,.g4>*,.vs>*,.degree>*,.homegrid>*,.hero>*{min-width:0}
+.callout{padding:.9rem 1.1rem;background:var(--yellow-soft);border-left:4px solid var(--yellow)}
+.callout b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem}
+.stat{border-left:4px solid var(--yellow);padding:.3rem .8rem}
+.stat .v{font-family:var(--head);font-weight:700;font-size:1.45rem;line-height:1.2}
+.stat .l{font-size:.88rem;color:var(--muted);line-height:1.35}
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem}
+.vs .side{border:1px solid var(--line);border-radius:6px;padding:1rem}
+.vs .side h4{margin-bottom:.7rem}
+.vs .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+.vs .row img{aspect-ratio:1/1;object-fit:contain;padding:.3rem}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:.5rem .8rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{background:var(--yellow-soft);font-weight:700}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok{color:var(--good);font-weight:700}
+.bad{color:var(--bad);font-weight:700}
+
+/* chart */
+.chart{border:1px solid var(--line);padding:1rem 1rem .7rem;background:#fff}
+.chart svg{display:block;width:100%;height:auto}
+.chart .lbl{fill:var(--ink);font:13px var(--body)}
+.chart .val{fill:var(--ink);font:700 12.5px var(--body)}
+.chart .tick{fill:var(--muted);font:11px var(--body)}
+.chart .ax{stroke:#cfcab9}
+.chart .b1{fill:var(--yellow)}
+.chart .b2{fill:#cfcab9}
+
+/* cv */
+.paper{display:flex;flex-direction:column;gap:1.2rem;max-width:52rem}
+.paper img{display:block;width:100%;height:auto;border:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.08);cursor:zoom-in}
+.cvtop{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;max-width:52rem;margin-bottom:1.3rem}
+
+/* academics */
+.degree{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.4rem;align-items:stretch}
+.gpa{display:flex;flex-direction:column;justify-content:center;gap:.3rem;background:var(--yellow);border-radius:6px;padding:1.5rem}
+.gpa .big{font-family:var(--head);font-size:3rem;font-weight:700;line-height:1.1}
+.gpa .big small{font-size:1.2rem;font-weight:400}
+.gpa span{font-size:.95rem}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
+.thumbs img{display:block;width:100%;height:auto;border:1px solid var(--line);cursor:zoom-in}
+.bands{display:flex;flex-direction:column;gap:.7rem}
+.band{display:grid;grid-template-columns:6rem minmax(0,1fr) 2.6rem;gap:.8rem;align-items:center;font-size:.97rem}
+.band .track{height:.65rem;background:#efece2;border-radius:2px;overflow:hidden}
+.band .fill{height:100%;background:var(--yellow)}
+.band b{text-align:right}
+.band.total .fill{background:var(--yellow-deep)}
+
+/* employment */
+.job{display:grid;grid-template-columns:12rem minmax(0,1fr);gap:2rem;padding-block:2rem;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.job .when{font-size:.95rem;color:var(--muted);display:flex;flex-direction:column;gap:.2rem}
+.job .when b{color:var(--ink)}
+
+/* photography */
+.dark{background:var(--dark);color:#f1f1f1;border-radius:6px;padding:2rem;margin-top:.5rem}
+.dark .muted{color:#c9c9c9}
+.dark h2{color:#fff}
+.dark .tag{background:var(--yellow);color:var(--ink);font-weight:700}
+.viewer{margin-top:1.6rem}
+.stage{position:relative;background:#111;border-radius:4px;height:min(72vh,40rem);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage img{max-width:100%;max-height:100%;width:auto;height:auto;display:block;cursor:zoom-in;transition:opacity .25s}
+.stage img.fade{opacity:0}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:2.8rem;height:2.8rem;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font:400 2rem/1 var(--body);cursor:pointer;display:grid;place-items:center;padding-bottom:.2rem}
+.nav:hover{background:var(--yellow);color:var(--ink)}
+.nav.prev{left:.8rem}.nav.next{right:.8rem}
+.vcap{display:flex;justify-content:space-between;gap:1rem;padding:.8rem .1rem;font-family:var(--head);font-style:italic;color:#eee}
+.vcap #vcount{font-family:var(--body);font-style:normal;color:#aaa;font-size:.9rem;font-variant-numeric:tabular-nums}
+.strip{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.4rem;scrollbar-width:thin}
+.fs{flex:0 0 auto;width:5.2rem;height:5.2rem;padding:0;border:2px solid transparent;border-radius:3px;background:none;cursor:pointer;opacity:.5;transition:opacity .2s}
+.fs img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.fs:hover{opacity:.85}
+.fs.on{opacity:1;border-color:var(--yellow)}
+.fs.on img{filter:none}
+@media (max-width:620px){.stage{height:auto;aspect-ratio:1/1}.fs{width:4rem;height:4rem}.nav{width:2.3rem;height:2.3rem}}
+@media (prefers-reduced-motion: reduce){.stage img{transition:none}}
+.hobbies{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
+.hob{border-top:4px solid var(--yellow);background:var(--soft);padding:1.1rem}
+.hob h3{font-size:1.08rem;margin:.1rem 0 .4rem}
+.hob .ic{display:none}
+
+/* footer */
+footer{background:var(--dark);color:#cfcfcf;padding-block:2.2rem;margin-top:2rem;font-size:.95rem;border-top:6px solid var(--yellow)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1.2rem 2.4rem;align-items:center;justify-content:space-between}
+footer a{color:#fff;text-decoration-color:var(--yellow)}
+footer a:hover{background:none;color:var(--yellow)}
+footer .mail{color:#fff;user-select:all}
+.copybtn{margin-left:.5rem;padding:.2rem .6rem;border-radius:3px;border:0;background:var(--yellow);color:var(--ink);font:700 .8rem var(--body);cursor:pointer}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(20,20,20,.92);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;background:#fff;cursor:zoom-out}
+.lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:calc(env(safe-area-inset-right,0px) + 12px);background:var(--yellow);color:var(--ink);border:0;border-radius:3px;padding:.4rem .9rem;font:700 .9rem var(--body);cursor:pointer}
+
+@media (max-width: 900px){
+  .hero,.homegrid,.degree{grid-template-columns:1fr}
+  .portrait{justify-self:start;max-width:18rem;order:-1}
+  .facts,.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3,.hobbies{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feat{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .job{grid-template-columns:1fr;gap:.6rem}
+}
+@media (max-width: 620px){
+  body{font-size:1rem}
+  .g2,.g3,.gw,.gw.rev,.vs,.hobbies{grid-template-columns:1fr}
+  .feat{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chips{columns:1}
+  .dark{padding:1.2rem}
+  .page{padding-block:2rem 3rem}
+  .tabs ul{gap:1rem}
+}
+</style>
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home">Mollah Adib Aktab</a>
+    <nav class="tabs" aria-label="Pages">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#employment">Employment</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#beyond">Extracurricular</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- =================================================================== HOME -->
+<section class="page on" id="home" data-page>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Mollah Adib Aktab</h1>
+        <p class="tagline"><b>Biomedical Engineer</b> &middot; Research Assistant, BioInnovation Research Group, BUET</p>
+
+        <!-- ================= EDIT YOUR INTRODUCTION BELOW =================
+             Rewrite the paragraphs inside <div class="bio"> ... </div>.
+             Keep each paragraph inside its own <p> ... </p> tags.            -->
+        <div class="bio">
+          <p>I am a Biomedical Engineer and Research Assistant at the BioInnovation Research Group, Bangladesh University of Engineering and Technology (BUET). My work focuses on computational biomechanics, nonlinear finite element analysis (FEA), and simulation-based medical device design, with particular interests in computational ophthalmology and soft tissue mechanics.</p>
+          <p>My undergraduate thesis was on ocular mechanics, where I built a comprehensive eye model and tried to find out the cause of ocular damage. I have experience working on several industrial projects in Bangladesh and the UK. I worked on a collaborative project with DBL Pharmaceuticals, where I assessed their inhaler device. I have also worked as a Design and FEA Engineer at Vanguard Medical, UK, where I gained hands-on expertise in using FEA and design skills to develop and design products.</p>
+          <p>I am interested in expanding my FEA and biomechanics knowledge and skills through doctoral research, and in working for the betterment of society.</p>
+        </div>
+        <!-- ================= END OF INTRODUCTION ================= -->
+
+        <span class="seeking">Looking for a PhD position</span>
+        <div class="btns">
+          <a class="btn go" href="#cv">View my CV</a>
+          <a class="btn" href="#research">Research</a>
+          <a class="btn" href="https://linkedin.com/in/adib-aktab-718275284" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/Elmacho0007" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="portrait"><img src="img/me.jpg" fetchpriority="high" width="900" height="898" alt="Portrait of Mollah Adib Aktab"></div>
+    </div>
+
+    <dl class="facts">
+      <div><dt>Now</dt><dd>Research Assistant, BioInnovation Research Group, BUET</dd></div>
+      <div><dt>Degree</dt><dd>B.Sc. Biomedical Engineering, BUET, CGPA 3.59</dd></div>
+      <div><dt>Thesis</dt><dd>FE model of the eye for glaucoma risk (A+)</dd></div>
+      <div><dt>English</dt><dd>IELTS Academic 7.0 (C1)</dd></div>
+    </dl>
+
+    <div class="homegrid">
+      <div>
+        <h4>Research interests</h4>
+        <ul class="chips">
+          <li class="chip">Ocular biomechanics</li>
+          <li class="chip">Soft tissue mechanics</li>
+          <li class="chip">Hyperelastic material modelling</li>
+          <li class="chip">Nonlinear FEA</li>
+          <li class="chip">CFD in medical devices</li>
+          <li class="chip">Simulation-based device design</li>
+          <li class="chip">Prosthetics</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Updates</h4>
+        <ul class="news">
+          <li><time>Aug 2026</time><span>IELTS Academic: overall band 7.0 (CEFR C1).</span></li>
+          <li><time>2026</time><span>Submitted my first-author paper on the low-cost prosthetic ankle-foot to the 9th ICMIEE.</span></li>
+          <li><time>2026</time><span>Finished the Smart Connector design validation to SAE J3027 for Vanguard Medical.</span></li>
+          <li><time>2025</time><span>Started as Research Assistant in the BioInnovation Research Group, BUET.</span></li>
+          <li><time>Mar 2025</time><span>Graduated with a B.Sc. in Biomedical Engineering from BUET.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:2.8rem">
+        <h4>Selected work</h4>
+        <div class="feat">
+          <a class="fcard" href="#research" data-jump="thesis"><div class="ph"><img src="img/eye_labels.jpg" width="1400" height="561" loading="lazy" alt="Labelled eye model"></div><div class="tx"><b>Eye model for glaucoma risk</b><span>Undergraduate thesis</span></div></a>
+          <a class="fcard" href="#research" data-jump="prosthesis"><div class="ph"><img src="img/team.jpg" width="1066" height="700" loading="lazy" alt="The prosthesis team with the finished leg" style="object-position:55% 40%"></div><div class="tx"><b>Low-cost prosthetic leg</b><span>Academic project, paper submitted</span></div></a>
+          <a class="fcard" href="#research" data-jump="inhaler"><div class="ph"><img src="img/syk_vel.jpg" width="476" height="476" loading="lazy" alt="Air velocity in the Sykonahaler" style="object-fit:contain"></div><div class="tx"><b>Dry powder inhaler CFD</b><span>Research assistant, DBL Pharmaceuticals</span></div></a>
+          <a class="fcard" href="#projects" data-jump="p-icu"><div class="ph"><img src="img/icu_model.jpg" alt="ICU bed FE model" style="object-fit:contain"></div><div class="tx"><b>Crash-proof ICU bed</b><span>Vanguard Medical, BS EN 1789</span></div></a>
+          <a class="fcard" href="#projects" data-jump="p-sc"><div class="ph"><img src="img/sc_render.jpg" alt="Smart Connector on the SmartCot stretcher"></div><div class="tx"><b>SmartCot Smart Connector</b><span>Vanguard Medical, SAE J3027</span></div></a>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== CV -->
+<section class="page" id="cv" data-page>
+  <div class="wrap">
+    <div class="pagehead">
+      <h1>Curriculum Vitae</h1>
+      <p>My full CV. Click a page to enlarge it, or open the PDF.</p>
+    </div>
+    <div class="cvtop">
+      <span class="muted mono" style="font-size:.85rem">Updated October 2026 &middot; 3 pages</span>
+      <a class="btn go" href="docs/Mollah_Adib_Aktab_CV.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
+    </div>
+    <div class="paper">
+      <img src="img/cv-1.jpg" width="1075" height="1521" loading="lazy" alt="CV page 1">
+      <img src="img/cv-2.jpg" width="1075" height="1521" loading="lazy" alt="CV page 2">
+      <img src="img/cv-3.jpg" width="1075" height="1521" loading="lazy" alt="CV page 3">
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== ACADEMICS -->
+<section class="page" id="academics" data-page>
+  <div class="wrap">
+    <div class="pagehead">
+      <h1>Academics</h1>
+      <p>My undergraduate record at BUET and my English language test result.</p>
+    </div>
+
+    <div class="degree">
+      <div class="card stack">
+        <h4>Degree</h4>
+        <h2>Bachelor of Science in Biomedical Engineering</h2>
+        <p class="meta">Bangladesh University of Engineering and Technology (BUET), Dhaka &middot; Sessions 2019-20 to 2022-23 &middot; Completed March 2025</p>
+        <p>157.5 credits completed. Thesis: <i>A multi-component finite element model of the human eye to assess glaucoma risk under pathological conditions</i>, graded A+.</p>
+      </div>
+      <div class="gpa">
+        <span>Cumulative GPA</span>
+        <div class="big">3.59 <small>/ 4.00</small></div>
+        <span>Project and Thesis (6 credits): A+</span>
+      </div>
+    </div>
+
+    <h3 class="sub">Courses closest to my research</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Course</th><th>Title</th><th class="n">Credits</th><th class="n">Grade</th></tr></thead>
+        <tbody>
+          <tr><td>BME 400</td><td>Project and Thesis</td><td class="n">6.00</td><td class="n ok">A+</td></tr>
+          <tr><td>BME 201</td><td>Biomechanics</td><td class="n">3.00</td><td class="n ok">A+</td></tr>
+          <tr><td>MME 297 / 298</td><td>Structure and Properties of Biomaterials (theory and sessional)</td><td class="n">4.50</td><td class="n ok">A+</td></tr>
+          <tr><td>BME 305</td><td>Physiological Control Systems</td><td class="n">3.00</td><td class="n ok">A+</td></tr>
+          <tr><td>BME 403</td><td>Medical Imaging</td><td class="n">3.00</td><td class="n ok">A+</td></tr>
+          <tr><td>BME 300</td><td>Biomedical Engineering Design I</td><td class="n">1.50</td><td class="n ok">A+</td></tr>
+          <tr><td>MATH 213</td><td>Differential Equations</td><td class="n">3.00</td><td class="n ok">A+</td></tr>
+          <tr><td>MATH 215</td><td>Linear Algebra</td><td class="n">3.00</td><td class="n">A</td></tr>
+          <tr><td>BME 350</td><td>Biomedical Engineering Design II</td><td class="n">1.50</td><td class="n">A</td></tr>
+          <tr><td>BME 205 / 206</td><td>Biofluid Mechanics and Heat Transfer (theory and sessional)</td><td class="n">4.50</td><td class="n">A−</td></tr>
+          <tr><td>BME 409</td><td>Tissue Engineering</td><td class="n">3.00</td><td class="n">A−</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Official transcript</h3>
+    <p class="muted" style="margin-bottom:1rem;font-size:.95rem">Four pages, issued by the Controller of Examinations, BUET, on 26 July 2025. Click a page to enlarge. Date of birth withheld.</p>
+    <div class="thumbs">
+      <img src="img/transcript-1.jpg" width="1075" height="1521" loading="lazy" alt="Transcript page 1: summary of academic record">
+      <img src="img/transcript-2.jpg" width="1075" height="1521" loading="lazy" alt="Transcript page 2: Level 1 and Level 2 Term 1 courses">
+      <img src="img/transcript-3.jpg" width="1075" height="1521" loading="lazy" alt="Transcript page 3: Level 2 Term 2 and Level 3 courses">
+      <img src="img/transcript-4.jpg" width="1075" height="1521" loading="lazy" alt="Transcript page 4: Level 4 courses">
+    </div>
+
+    <h3 class="sub">English language: IELTS Academic</h3>
+    <div class="gw">
+      <div class="card stack">
+        <div class="bands">
+          <div class="band"><span>Listening</span><div class="track"><div class="fill" style="width:77.8%"></div></div><b>7.0</b></div>
+          <div class="band"><span>Reading</span><div class="track"><div class="fill" style="width:77.8%"></div></div><b>7.0</b></div>
+          <div class="band"><span>Writing</span><div class="track"><div class="fill" style="width:72.2%"></div></div><b>6.5</b></div>
+          <div class="band"><span>Speaking</span><div class="track"><div class="fill" style="width:77.8%"></div></div><b>7.0</b></div>
+          <div class="band total"><span><b style="font-family:var(--body);text-align:left">Overall</b></span><div class="track"><div class="fill" style="width:77.8%"></div></div><b>7.0</b></div>
+        </div>
+        <p class="muted" style="font-size:.92rem">Bars are drawn on the 9-band scale. CEFR level C1. Test date 7 August 2026, centre BD050.</p>
+        <p style="font-size:.95rem">Test Report Form number <span class="mono">26BD505980AKTM050A</span>. Universities can verify it at <a href="https://ielts.org/verify" target="_blank" rel="noopener">ielts.org/verify</a>.</p>
+      </div>
+      <figure>
+        <img src="img/ielts.jpg" width="910" height="1287" loading="lazy" alt="IELTS Test Report Form with personal ID numbers withheld">
+        <figcaption>IELTS Test Report Form. Candidate ID and date of birth withheld.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== RESEARCH -->
+<section class="page" id="research" data-page>
+  <div class="wrap">
+    <div class="pagehead">
+      <h1>Research and Publications</h1>
+      <p>My thesis, my work as a research assistant and my academic design project, with the methods, the validation and the main results.</p>
+    </div>
+    <nav class="subnav" aria-label="Research sections">
+      <a href="#research" data-jump="thesis">Undergraduate thesis</a>
+      <a href="#research" data-jump="inhaler">Research assistant: inhaler CFD</a>
+      <a href="#research" data-jump="prosthesis">Academic project: prosthetic leg</a>
+      <a href="#research" data-jump="pubs">Publications</a>
+    </nav>
+
+    <!-- ---------------- THESIS ---------------- -->
+    <article class="block" id="thesis">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag hot">Undergraduate thesis</span><span class="tag">2025</span><span class="tag">Grade A+</span></div>
+        <h2>A multi-component finite element model of the human eye to assess glaucoma risk under pathological conditions</h2>
+        <p class="meta">Supervisor: Prof. Dr. Muhammad Tarik Arafat, Head, Department of Biomedical Engineering, BUET &middot; With Dr. Mohammed A. Hannan, University of British Columbia</p>
+      </div>
+
+      <div class="gw">
+        <div class="stack read">
+          <p class="lead">Glaucoma causes about 5% of all blindness that is not due to refractive error. It damages the optic nerve where it leaves the eye, at a thin mesh-like layer called the <b>lamina cribrosa (LC)</b>.</p>
+          <p>Most earlier finite element models used a simplified eye shape and studied one load at a time. I built a model that includes the main tissues of the eye and looked at how eye pressure (IOP), intracranial pressure (ICP), the pressure difference across the LC (translaminar pressure, TLP), blood pressure and sclera stiffness each change the deformation and strain of the LC over a heartbeat.</p>
+        </div>
+        <div class="stats" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          <div class="stat"><div class="v">15</div><div class="l">tissues in the model</div></div>
+          <div class="stat"><div class="v">113,496</div><div class="l">hexahedral elements</div></div>
+          <div class="stat"><div class="v">4</div><div class="l">parametric studies</div></div>
+          <div class="stat"><div class="v">3 / 3</div><div class="l">validation checks inside the measured range</div></div>
+        </div>
+      </div>
+
+      <h3 class="sub">Geometry and mesh</h3>
+      <figure>
+        <img src="img/eye_labels.jpg" width="1400" height="561" loading="lazy" alt="Cross-section of the eye model with its labelled tissues">
+        <figcaption><b>Fig. 1</b> The eye model built in SolidWorks: cornea, lens capsule, cortex and nucleus, zonules, sclera, choroid, retina, lamina cribrosa, pre- and post-laminar neural tissue, pia and dura mater, central retinal artery and orbital fat.</figcaption>
+      </figure>
+      <div class="g2" style="margin-top:1.1rem">
+        <figure><img src="img/eye_mesh.jpg" width="775" height="748" loading="lazy" alt="Hexahedral mesh of the eye model"><figcaption><b>Fig. 2</b> 8-node hexahedral mesh (113,496 elements, 124,238 nodes) made in Ansys and FEMAP, refined at the optic nerve head and checked with a mesh convergence study.</figcaption></figure>
+        <figure><img src="img/eye_iface.jpg" width="622" height="646" loading="lazy" alt="Close-up of the mesh at tissue interfaces"><figcaption><b>Fig. 3</b> Neighbouring tissues share nodes (node merging), which avoids contact-related convergence problems.</figcaption></figure>
+      </div>
+
+      <h3 class="sub">Material models</h3>
+      <div class="gw">
+        <div class="stack">
+          <p>The sclera and the LC carry most of the load, so I fitted first-order Ogden hyperelastic models to experimental stress–strain data and checked each fit on a single-element model. The pia and dura mater used a Yeoh model, and the other tissues were linear elastic.</p>
+          <div class="tbl">
+            <table>
+              <thead><tr><th>Tissue</th><th>Model</th><th class="n">Parameters</th></tr></thead>
+              <tbody>
+                <tr><td>Sclera</td><td>Ogden, 1st order</td><td class="n">μ₁ = 15,818 Pa, α₁ = 56.8</td></tr>
+                <tr><td>Lamina cribrosa</td><td>Ogden, 1st order</td><td class="n">μ₁ = 3.6×10⁵ Pa, α₁ = 10.4</td></tr>
+                <tr><td>Pia and dura mater</td><td>Yeoh</td><td class="n">C₁ = 0.17, C₂ = 4.21, C₃ = 4.97 MPa</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="stack">
+          <figure><img src="img/fit_sclera.jpg" width="1351" height="784" loading="lazy" alt="Ogden fit for sclera"><figcaption><b>Fig. 4</b> Sclera: experimental data and unit-element model.</figcaption></figure>
+          <figure><img src="img/fit_lc.jpg" width="618" height="502" loading="lazy" alt="Ogden fit for lamina cribrosa"><figcaption><b>Fig. 5</b> Lamina cribrosa: experimental data and unit-element model.</figcaption></figure>
+        </div>
+      </div>
+
+      <h3 class="sub">Loads and boundary conditions</h3>
+      <div class="g2">
+        <figure><img src="img/eye_bc.jpg" width="1000" height="588" loading="lazy" alt="Pressures applied to the eye model"><figcaption><b>Fig. 6</b> The vitreous and aqueous humour are modelled as enclosed fluid with HSFLD242 elements (written in APDL), which apply IOP. ICP acts in the subarachnoid space and arterial pressure in the central retinal artery.</figcaption></figure>
+        <figure><img src="img/eye_load.jpg" width="1400" height="880" loading="lazy" alt="Pressure curves over the cardiac cycle"><figcaption><b>Fig. 7</b> Heartbeat-driven IOP, ICP and central retinal artery pressure (mean 62.1 mmHg) applied in a transient analysis. Load data from Kaskar et al.</figcaption></figure>
+      </div>
+
+      <h3 class="sub">Validation</h3>
+      <div class="gw">
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Quantity</th><th class="n">Measured / published</th><th class="n">This model</th></tr></thead>
+            <tbody>
+              <tr><td>LC strain, ex vivo, IOP 5 → 45 mmHg (Ling et al., 2019)</td><td class="n">4.4 ± 1.8%</td><td class="n ok">2.81%</td></tr>
+              <tr><td>LC mean strain at IOP 25 mmHg (Sigal et al., FE model)</td><td class="n">1.53–5.30%</td><td class="n ok">1.76%</td></tr>
+              <tr><td>LC displacement per heartbeat (Dragostinoff et al., 2013)</td><td class="n">2–9 µm</td><td class="n ok">7.0 µm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure><img src="img/lc_disp.jpg" width="674" height="310" loading="lazy" alt="LC displacement at peak IOP and end of cardiac cycle"><figcaption><b>Fig. 8</b> LC displacement in the baseline case at (a) peak IOP, 1.2 s, and (b) the end of the cardiac cycle, 2.0 s.</figcaption></figure>
+      </div>
+
+      <h3 class="sub">Results</h3>
+      <div class="gw">
+        <div class="chart" role="img" aria-label="Increase in LC deformation: eye pressure 15 to 45 mmHg 12 percent; translaminar pressure 3.7 to 10 mmHg 8.9 percent; blood pressure low to high 0.8 percent; sclera stiffness plus or minus 20 percent 0.78 percent.">
+          <svg viewBox="0 0 540 212">
+            <line class="ax" x1="200" y1="10" x2="200" y2="182"/><line class="ax" x1="200" y1="182" x2="520" y2="182"/>
+            <text class="tick" x="200" y="200" text-anchor="middle">0%</text>
+            <text class="tick" x="313" y="200" text-anchor="middle">5%</text>
+            <text class="tick" x="426" y="200" text-anchor="middle">10%</text>
+            <text class="lbl" x="190" y="38" text-anchor="end">Eye pressure 15→45 mmHg</text><rect class="b1" x="200" y="23" width="271.2" height="22" rx="3"/><text class="val" x="477" y="39">12%</text>
+            <text class="lbl" x="190" y="80" text-anchor="end">Across LC 3.7→10 mmHg</text><rect class="b1" x="200" y="65" width="201.1" height="22" rx="3"/><text class="val" x="407" y="81">8.9%</text>
+            <text class="lbl" x="190" y="122" text-anchor="end">Blood pressure low→high</text><rect class="b2" x="200" y="107" width="18.1" height="22" rx="3"/><text class="val" x="224" y="123">0.8%</text>
+            <text class="lbl" x="190" y="164" text-anchor="end">Sclera stiffness ±20%</text><rect class="b2" x="200" y="149" width="17.6" height="22" rx="3"/><text class="val" x="224" y="165">0.78%</text>
+          </svg>
+          <figcaption><b>Fig. 9</b> Increase in LC deformation in each parametric study.</figcaption>
+        </div>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Study</th><th>Cases</th></tr></thead>
+            <tbody>
+              <tr><td>1. Eye pressure</td><td>Mean IOP 15, 30 and 45 mmHg (normal, mild and extreme ocular hypertension)</td></tr>
+              <tr><td>2. Translaminar pressure</td><td>3.7, 6.59 and 10 mmHg (normal, idiopathic intracranial hypertension, CSF leakage)</td></tr>
+              <tr><td>3. Blood pressure</td><td>74/56.6, 93/70 and 111.6/84 mmHg</td></tr>
+              <tr><td>4. Sclera stiffness</td><td>Baseline and ±20%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="g2" style="margin-top:1.1rem">
+        <figure><img src="img/iop_strain.jpg" width="583" height="332" loading="lazy" alt="Maximum principal elastic strain of LC against IOP"><figcaption><b>Fig. 10</b> Maximum principal elastic strain of the LC rises with IOP.</figcaption></figure>
+        <figure><img src="img/tlp_strain.jpg" width="572" height="322" loading="lazy" alt="Maximum principal elastic strain of LC against TLP"><figcaption><b>Fig. 11</b> Maximum principal elastic strain of the LC rises with translaminar pressure.</figcaption></figure>
+      </div>
+      <div class="callout" style="margin-top:1.4rem"><b>Conclusion.</b> Eye pressure and the pressure difference across the LC are the main drivers of LC deformation. Blood pressure and sclera stiffness each changed it by less than 1%. Next, I would like to add the ocular pulse amplitude and blood flow, run fluid–structure interaction, and validate the model against animal experiments.</div>
+      <div class="links" style="margin-top:1.2rem">
+        <a class="btn" href="https://docs.google.com/presentation/d/1VPIxByCJa_-_tIYzSAolxPvOopmUxkL3/edit?usp=sharing&amp;ouid=118274798654463432836&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Thesis defence slides</a>
+        <span class="btn" style="cursor:default;border-style:dashed">Journal manuscript in preparation</span>
+      </div>
+    </article>
+
+    <!-- ---------------- INHALER ---------------- -->
+    <article class="block" id="inhaler">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag hot">Research assistant</span><span class="tag">2025</span><span class="tag">Ansys Fluent</span><span class="tag">Industry collaboration</span></div>
+        <h2>Comprehensive study of a multi-dose dry powder inhaler: Sykonahaler vs Bexihaler</h2>
+        <p class="meta">Simulation lead, BioInnovation Research Group, BUET, for DBL Pharmaceuticals Ltd &middot; Supervisor: Prof. Dr. Muhammad Tarik Arafat</p>
+      </div>
+      <div class="stack read">
+        <p class="lead">A dry powder inhaler only works if the airflow breaks up the drug powder into particles small enough to reach the deep lung. DBL Pharmaceuticals wanted to know which design does this better: their multi-dose Sykonahaler or the capsule-based Bexihaler.</p>
+        <p>I modelled the internal flow path of both devices in SolidWorks, meshed them with five inflation layers (y⁺ ≈ 1), and ran Ansys Fluent with the k-ω SST turbulence model and discrete phase particle tracking.</p>
+      </div>
+
+      <h3 class="sub">From the real device to the CFD model</h3>
+      <div class="vs">
+        <div class="side">
+          <h4>Sykonahaler (multi-dose, blister)</h4>
+          <div class="row">
+            <figure><img src="img/syk_prod.jpg" width="880" height="814" loading="lazy" alt="Sykonahaler device"><figcaption>Device</figcaption></figure>
+            <figure><img src="img/syk_geo.jpg" width="850" height="720" loading="lazy" alt="Sykonahaler flow geometry"><figcaption>Flow geometry</figcaption></figure>
+            <figure><img src="img/syk_mesh.jpg" width="590" height="609" loading="lazy" alt="Sykonahaler mesh"><figcaption>Mesh</figcaption></figure>
+          </div>
+        </div>
+        <div class="side">
+          <h4>Bexihaler (single dose, capsule)</h4>
+          <div class="row">
+            <figure><img src="img/bex_prod.jpg" width="1054" height="1280" loading="lazy" alt="Bexihaler device"><figcaption>Device</figcaption></figure>
+            <figure><img src="img/bex_geo.jpg" width="673" height="720" loading="lazy" alt="Bexihaler flow geometry"><figcaption>Flow geometry</figcaption></figure>
+            <figure><img src="img/bex_mesh.jpg" width="503" height="678" loading="lazy" alt="Bexihaler mesh"><figcaption>Mesh</figcaption></figure>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub">Validation</h3>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Device</th><th class="n">CFD flow at 4 kPa</th><th class="n">Reference</th><th class="n">Device resistance</th></tr></thead>
+          <tbody>
+            <tr><td>Sykonahaler</td><td class="n">63.9 L/min</td><td class="n">Accuhaler®: 60 L/min</td><td class="n">59.4 √Pa·s/L</td></tr>
+            <tr><td>Bexihaler</td><td class="n">70.2 L/min</td><td class="n">Measured: 71.04 L/min (1.2% error)</td><td class="n">53.4 √Pa·s/L</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">Air and particle velocity</h3>
+      <div class="g4">
+        <figure><img src="img/syk_blister.jpg" width="376" height="396" loading="lazy" alt="Sykonahaler velocity at blister"><figcaption><b>Sykonahaler</b> at the blister</figcaption></figure>
+        <figure><img src="img/syk_grid.jpg" width="312" height="360" loading="lazy" alt="Sykonahaler velocity at grid"><figcaption><b>Sykonahaler</b> at the grid</figcaption></figure>
+        <figure><img src="img/syk_vel.jpg" width="476" height="476" loading="lazy" alt="Sykonahaler velocity section"><figcaption><b>Sykonahaler</b> section, peak above 80 m/s</figcaption></figure>
+        <figure><img src="img/syk_part.jpg" width="476" height="392" loading="lazy" alt="Sykonahaler particle velocity"><figcaption><b>Sykonahaler</b> particle velocity</figcaption></figure>
+        <figure><img src="img/bex_caps.jpg" width="279" height="397" loading="lazy" alt="Bexihaler velocity at capsule chamber"><figcaption><b>Bexihaler</b> at the capsule chamber</figcaption></figure>
+        <figure><img src="img/bex_grid.jpg" width="502" height="431" loading="lazy" alt="Bexihaler velocity at grid"><figcaption><b>Bexihaler</b> at the grid</figcaption></figure>
+        <figure><img src="img/bex_vel.jpg" width="439" height="471" loading="lazy" alt="Bexihaler velocity field"><figcaption><b>Bexihaler</b> velocity field, peak about 75.3 m/s</figcaption></figure>
+        <figure><img src="img/bex_part.jpg" width="420" height="336" loading="lazy" alt="Bexihaler particle velocity"><figcaption><b>Bexihaler</b> particle velocity</figcaption></figure>
+      </div>
+
+      <h3 class="sub">How long the particles stay inside</h3>
+      <div class="g2">
+        <figure><img src="img/syk_rt.jpg" width="466" height="351" loading="lazy" alt="Sykonahaler residence time"><figcaption><b>Sykonahaler:</b> 1–10 ms, close to the 3 ms reported for the Accuhaler.</figcaption></figure>
+        <figure><img src="img/bex_rt.jpg" width="481" height="428" loading="lazy" alt="Bexihaler residence time"><figcaption><b>Bexihaler:</b> up to 300 ms, with particles held in slow zones of the capsule chamber and grid.</figcaption></figure>
+      </div>
+      <div class="callout" style="margin-top:1.4rem"><b>Result.</b> The Sykonahaler spreads high-velocity air over most of its blister and grid and lets particles leave quickly, so it breaks up the powder better. The slow zones found in the Bexihaler agree with the cascade impactor (NGI) data: 189 µg of drug stayed in stages 1–2 against 48 µg reaching stages 3–7.</div>
+      <div class="links" style="margin-top:1.2rem"><a class="btn" href="https://drive.google.com/drive/folders/1tKMJ5oTotNb-z9B2JNX3rosXNIs4bW06?usp=sharing" target="_blank" rel="noopener">Project report</a></div>
+    </article>
+
+    <!-- ---------------- PROSTHESIS ---------------- -->
+    <article class="block" id="prosthesis">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag hot">Academic project</span><span class="tag">BME 350, 2023 → paper 2026</span><span class="tag">Nonlinear FEA</span><span class="tag">Bench testing</span></div>
+        <h2>A prosthesis made in Bangladesh for below-knee amputees</h2>
+        <p class="meta">Team: Marshal Ashif Shawkat, S. M. Mursalin Sonet, Adib Aktab, Md. Redwan Hossain &middot; Supervisor: Md. Tazuddin Ahmed, Lecturer, Dept. of BME, BUET</p>
+      </div>
+      <div class="gw">
+        <figure><img src="img/team.jpg" width="1066" height="700" loading="lazy" alt="The four team members with the finished prosthetic leg"><figcaption><b>Our team</b> with the finished prosthesis at BUET.</figcaption></figure>
+        <div class="stack">
+          <p class="lead">Below-knee amputees in Bangladesh usually choose between a prosthesis they cannot afford and a cheap one that breaks. We set out to make one from materials you can buy locally.</p>
+          <p>The foot is a single-keel Bézier-curve design based on the Lower Leg Trajectory Error (LLTE) framework, CNC machined from cast nylon. The shank is an HDPE pipe and the socket is a clinically used PVC socket, all joined with nuts and bolts so any part can be replaced.</p>
+          <p>I ran the structural analysis: a nonlinear model in Ansys with plasticity and large deflection, validated against our bench tests, then used to check walking loads.</p>
+        </div>
+      </div>
+      <div class="g3" style="margin-top:1.4rem">
+        <figure><img src="img/pro_real.jpg" width="420" height="477" loading="lazy" alt="Fabricated prosthesis with labelled socket, shank and foot"><figcaption><b>The real product:</b> PVC socket, HDPE shank and nylon foot.</figcaption></figure>
+        <figure><img src="img/pro_cad.jpg" width="272" height="427" loading="lazy" alt="CAD model of the prosthesis"><figcaption><b>CAD assembly</b> in SolidWorks.</figcaption></figure>
+        <figure><img src="img/pro_profile.jpg" width="682" height="439" loading="lazy" alt="Dimensioned foot profile"><figcaption><b>Foot profile</b> from the LLTE design, with a 10 mm fillet near the tip.</figcaption></figure>
+      </div>
+
+      <h3 class="sub">Bench test and model validation</h3>
+      <figure><img src="img/pro_bench.jpg" width="1400" height="186" loading="lazy" alt="Bench compression tests and the broken foot"><figcaption><b>Fig.</b> (a) Load on top, (b) at the tip, (c) at the back, (d) the foot after it broke.</figcaption></figure>
+      <div class="gw" style="margin-top:1.1rem">
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Test</th><th class="n">Load</th><th>Real foot</th><th class="n">FE stress</th><th class="n">FOS</th></tr></thead>
+            <tbody>
+              <tr><td>Top surface</td><td class="n">890 N</td><td>Did not break</td><td class="n">56 MPa</td><td class="n">1.30</td></tr>
+              <tr><td>Tip</td><td class="n">3113 N</td><td>Did not break</td><td class="n">23 MPa</td><td class="n">3.26</td></tr>
+              <tr><td>Back</td><td class="n">4270 N</td><td>Broke at the ankle</td><td class="n">80.1 MPa</td><td class="n bad">0.94</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure><img src="img/pro_backload.jpg" width="963" height="322" loading="lazy" alt="Back-load simulation setup, force curve and plastic strain"><figcaption>Back-load simulation: two rigid bodies, force reaching 4270 N, and plastic strain of 0.27 at the ankle.</figcaption></figure>
+      </div>
+      <p style="margin-top:1rem" class="read">The model breaks at the same load and in the same place as the real foot (nylon yield 75 MPa). The foot carried 4270 N before failing, about five times the 850 N reported for a 3D-printed foot.</p>
+
+      <h3 class="sub">Is it safe for walking?</h3>
+      <div class="gw">
+        <figure><img src="img/pro_heel.jpg" width="994" height="337" loading="lazy" alt="Heel strike stress at 60 and 80 kg"><figcaption>Heel strike: 70.6 MPa at 60 kg, 78.9 MPa at 80 kg, and plastic strain at 80 kg.</figcaption></figure>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Phase</th><th>Load</th><th class="n">FOS 60 kg</th><th class="n">FOS 80 kg</th></tr></thead>
+            <tbody>
+              <tr><td>Heel strike</td><td>1.1 × BW, 15° back</td><td class="n">1.07</td><td class="n bad">0.95</td></tr>
+              <tr><td>Mid-stance</td><td>0.8 × BW, vertical</td><td class="n">2.41</td><td class="n">1.79</td></tr>
+              <tr><td>Toe-off</td><td>1.2 × BW, 20° forward</td><td class="n">4.78</td><td class="n">3.52</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:1.4rem"><b>Result.</b> The foot is safe for a 60 kg user in all three phases of walking. For an 80 kg user the heel strike stress goes just past yield, so the next version needs a thicker ankle section or a larger heel radius. Material cost is 4,320 BDT per leg, against about 25,000 BDT for commercial legs in Bangladesh.</div>
+      <div class="links" style="margin-top:1.2rem">
+        <a class="btn go" href="https://drive.google.com/file/d/1v35SI1Mgr1cMRtgZb70e8D2vog8jSRoh/view?usp=sharing" target="_blank" rel="noopener">Read the paper (PDF)</a>
+        <a class="btn" href="https://drive.google.com/drive/folders/16TJ1bEXsV005QB61jT5uAr9tkkFqhPIB?usp=drive_link" target="_blank" rel="noopener">Project report</a>
+      </div>
+    </article>
+
+    <!-- ---------------- PUBLICATIONS ---------------- -->
+    <article class="block" id="pubs">
+      <div class="blockhead"><h2>Publications</h2></div>
+      <ol class="stack" style="padding-left:1.3rem;margin:0">
+        <li><b>M. A. Aktab</b>, M. A. Shawkat, S. M. M. Sonet, M. R. Hossain and M. T. Ahmed. “Design and structural validation of a low-cost prosthetic ankle-foot made from locally available materials.” Submitted to the <i>9th International Conference on Mechanical, Industrial and Energy Engineering (ICMIEE)</i>. <span class="tag">Submitted</span> <a href="https://drive.google.com/file/d/1v35SI1Mgr1cMRtgZb70e8D2vog8jSRoh/view?usp=sharing" target="_blank" rel="noopener">PDF</a></li>
+        <li><b>M. A. Aktab</b>, M. A. Hannan and M. T. Arafat. “A multi-component finite element model of the human eye to assess glaucoma risk under pathological conditions.” <span class="tag hot">Manuscript in preparation</span></li>
+      </ol>
+    </article>
+  </div>
+</section>
+
+<!-- =================================================================== EMPLOYMENT -->
+<section class="page" id="employment" data-page>
+  <div class="wrap">
+    <div class="pagehead">
+      <h1>Employment</h1>
+      <p>Where I have worked as an engineer and researcher.</p>
+    </div>
+    <article class="job">
+      <div class="when"><b>2025 – May 2026</b><span>Remote, from Dhaka</span></div>
+      <div class="stack read">
+        <h2>SolidWorks Design and FEA Engineer</h2>
+        <p class="meta"><a href="https://vanguard-medical.co.uk/" target="_blank" rel="noopener">Vanguard Medical</a>, Birmingham, UK</p>
+        <p>Vanguard Medical designs and manufactures critical care transport equipment in the UK, including critical care trolleys, emergency child restraints and bespoke designs. I worked with their design and manufacturing team on structural validation.</p>
+        <ul class="pts">
+          <li>Ran crash, static and transient FEA to check medical transport devices against BS EN 1789 and SAE J3027.</li>
+          <li>Found stress, deformation and failure risks and proposed geometry and material changes to fix them.</li>
+          <li>Used hand calculations and tolerance stack-ups alongside FEA, and stayed in contact with the UK manufacturing team until each design was built.</li>
+        </ul>
+        <div class="links"><a class="btn" href="#projects">See the ICU bed and Smart Connector projects</a></div>
+      </div>
+    </article>
+    <article class="job">
+      <div class="when"><b>2025 – present</b><span>Dhaka, Bangladesh</span></div>
+      <div class="stack read">
+        <h2>Research Assistant</h2>
+        <p class="meta"><a href="https://bioinnovation.bme.buet.ac.bd/" target="_blank" rel="noopener">BioInnovation Research Group</a>, Department of Biomedical Engineering, BUET</p>
+        <p>The group develops simple healthcare solutions for clinical problems, working on wound care, drug delivery, tissue engineering and CFD of cardiovascular and neurovascular flow.</p>
+        <ul class="pts">
+          <li>Simulation lead on the dry powder inhaler study for DBL Pharmaceuticals Ltd.</li>
+          <li>Prepare project proposals, technical documentation and research material for academic and industry projects.</li>
+          <li>Manage day-to-day lab activities.</li>
+          <li>Train junior researchers in Ansys, COMSOL and Mimics.</li>
+        </ul>
+        <div class="links"><a class="btn" href="#research" data-jump="inhaler">See the inhaler project</a></div>
+      </div>
+    </article>
+    <article class="job">
+      <div class="when"><b>2024</b><span>Industrial attachment</span></div>
+      <div class="stack read">
+        <h2>Industrial Attachment, Biomedical Engineering</h2>
+        <p class="meta">Beximco Health and PPE, Beximco Industrial Park, Dhaka</p>
+        <p>Learned how medical equipment, PPE and masks are manufactured, and how a production environment works.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =================================================================== PROJECTS -->
+<section class="page" id="projects" data-page>
+  <div class="wrap">
+    <div class="pagehead">
+      <h1>Industrial Projects</h1>
+      <p>Design validation work for industry and other simulation projects.</p>
+    </div>
+    <nav class="subnav" aria-label="Projects">
+      <a href="#projects" data-jump="p-icu">ICU / ambulance bed</a>
+      <a href="#projects" data-jump="p-sc">Smart Connector</a>
+      <a href="#projects" data-jump="p-uj">Universal joint</a>
+      <a href="#projects" data-jump="p-grip">Robotic vial gripper</a>
+      <a href="#projects" data-jump="p-xp">Exhaust X-pipe</a>
+      <a href="#projects" data-jump="p-hall">Droplets in a hall</a>
+    </nav>
+
+    <article class="block" id="p-icu">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag hot">Vanguard Medical</span><span class="tag">2025</span><span class="tag">BS EN 1789</span><span class="tag">Transient structural</span></div>
+        <h2>Lightweight crash-proof ICU / ambulance bed</h2>
+      </div>
+      <div class="gw">
+        <div class="stack">
+          <p class="lead">Make the backrest lighter while making sure it still holds the patient in an ambulance crash.</p>
+          <ul class="pts">
+            <li>10 g crash pulse for 10 ms with a 77 kg patient and cushion load, run separately in +X, −X, +Y, −Y and +Z.</li>
+            <li>Checked every part against its yield strength and all 15 bolted joints against M5, M6 and M8 grade 8.8 shear and tension limits.</li>
+            <li>Moved the large boards to aluminium 6082-T4 and kept 304 stainless steel for brackets and hinges. Total mass 18.34 kg.</li>
+            <li>Every checked part and bolt kept a factor of safety above 1, and the bed was built in the UK.</li>
+          </ul>
+          <div class="links"><a class="btn" href="https://docs.google.com/presentation/d/1jVcZVwQEVIs6qxhBw6-BzUqmX-RUtLN3/edit?usp=drive_link&amp;ouid=118274798654463432836&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Project report</a></div>
+        </div>
+        <figure><img src="img/icu_model.jpg" width="850" height="517" loading="lazy" alt="FE model of the bed and backrest"><figcaption>Bed and backrest assembly.</figcaption></figure>
+      </div>
+      <div class="g4" style="margin-top:1.1rem">
+        <figure><img src="img/icu_cases.jpg" width="1094" height="607" loading="lazy" alt="Crash load cases"><figcaption>Patient load and crash directions</figcaption></figure>
+        <figure><img src="img/icu_s1.jpg" width="468" height="336" loading="lazy" alt="Back board pipe strain"><figcaption>Back board pipe, +Z</figcaption></figure>
+        <figure><img src="img/icu_s3.jpg" width="490" height="316" loading="lazy" alt="Bracket arm stress"><figcaption>Bracket arm, +Y, 120 MPa</figcaption></figure>
+        <figure><img src="img/icu_frame.jpg" width="720" height="1280" loading="lazy" alt="Built bed frame in the workshop" style="aspect-ratio:3/4;object-fit:cover"><figcaption>Built frame, UK workshop</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="block" id="p-sc">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag hot">Vanguard Medical</span><span class="tag">2026</span><span class="tag">SAE J3027</span><span class="tag">Hand calculation</span><span class="tag">Tolerance analysis</span></div>
+        <h2>Smart Connector latch for a stretcher system</h2>
+      </div>
+      <div class="gw">
+        <div class="stack">
+          <p class="lead">The connector must unlock with less than 2 lbf of finger force but stay locked under a 735 N pull-out load and 22.5 g acceleration.</p>
+          <ul class="pts">
+            <li>A moment balance about the latch pin showed the original design failed: the pull-out load produced a latch force of −6.89 lbf, which pushes the latch open.</li>
+            <li>Revision 1 changed the contact so the load closes the latch. Revision 2 moved the key mass and spring, raising the acceleration needed to unlock from 31.5 g to 90.8 g.</li>
+            <li>A 0.2 mm worst-case tolerance study cut the key rotation needed to clear interference from 2.4° to about 1°.</li>
+            <li>Pipe clamp: chose a 12 mm natural rubber pad over nylon after a tolerance loop and nonlinear FEA. Lever force 58.2 N against an 80 N limit.</li>
+          </ul>
+          <div class="links"><a class="btn" href="https://docs.google.com/presentation/d/14WCXuXC6J27z57uHYU0W3aiGYUQJw2dI/edit?usp=drive_link&amp;ouid=118274798654463432836&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Project report</a></div>
+        </div>
+        <figure><img src="img/sc_render.jpg" width="1400" height="788" loading="lazy" alt="Smart Connector on the stretcher"><figcaption>The connector on the stretcher frame.</figcaption></figure>
+      </div>
+      <div class="g3" style="margin-top:1.1rem">
+        <figure><img src="img/sc_fbd.jpg" width="709" height="439" loading="lazy" alt="Latch free body diagram"><figcaption>Latch free body diagram</figcaption></figure>
+        <figure><img src="img/sc_evo.jpg" width="1138" height="622" loading="lazy" alt="Original, revision 1 and revision 2"><figcaption>Original → Revision 1 → Revision 2</figcaption></figure>
+        <figure><img src="img/sc_clamp.jpg" width="800" height="718" loading="lazy" alt="Pipe clamp lever FEA"><figcaption>Pipe clamp lever with closing force</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="block" id="p-uj">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag">Transient structural</span><span class="tag">Joint probes</span></div>
+        <h2>Universal joint: torque transfer and stiffness</h2>
+      </div>
+      <div class="gw">
+        <div class="stack">
+          <p class="lead">A universal joint passes rotation between two shafts that meet at an angle. I measured how much torque gets through and how stiff the joint is.</p>
+          <ul class="pts">
+            <li>Checked the joint-probe method first on a gear pair with a known answer: hand calculation 0.55 N·m, probe 0.55 N·m.</li>
+            <li>With damping on the output shaft, 91–95% of the input torque reached the output.</li>
+            <li>A 1 N·m twist moved the joint 1.33 µm. A 675 N side load moved it 7.0 µm with a peak stress of 72.1 MPa.</li>
+          </ul>
+        </div>
+        <div class="g2">
+          <figure><img src="img/uj_def.jpg" width="675" height="623" loading="lazy" alt="Universal joint deformation under twist"><figcaption>Deformation under 1 N·m</figcaption></figure>
+          <figure><img src="img/uj_lat.jpg" width="998" height="531" loading="lazy" alt="Universal joint stress under side load"><figcaption>Stress under 675 N side load</figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="block" id="p-grip">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag">Static structural</span><span class="tag">Frictional contact</span></div>
+        <h2>Robotic hand: does the gripper damage the vial?</h2>
+      </div>
+      <div class="gw">
+        <div class="stack">
+          <p class="lead">The vial has to be protected, so I checked whether a gear and linkage gripper deforms it when it closes.</p>
+          <ul class="pts">
+            <li>100 N·mm closing moment at the drive gear, frictional contact between jaws and vial (µ = 0.75).</li>
+            <li>The vial moves about 2 mm with the jaws as one body and stays in the lowest stress band.</li>
+            <li>The peak stress sits on a sharp link corner, away from the vial. Next: a fillet there and a vial-only stress check.</li>
+          </ul>
+        </div>
+        <figure><img src="img/grip_setup.jpg" width="1042" height="649" loading="lazy" alt="Gripper model with closing moment"><figcaption>Gripper model and closing moment</figcaption></figure>
+      </div>
+      <div class="g2" style="margin-top:1.1rem">
+        <figure><img src="img/grip_def.jpg" width="1043" height="635" loading="lazy" alt="Gripper total deformation"><figcaption>Total deformation</figcaption></figure>
+        <figure><img src="img/grip_stress.jpg" width="1037" height="652" loading="lazy" alt="Gripper maximum principal stress"><figcaption>Maximum principal stress</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="block" id="p-xp">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag">Ansys Fluent</span><span class="tag">Turbulent flow</span></div>
+        <h2>Turbulent flow in an exhaust X-pipe (Porsche GT3 RS)</h2>
+      </div>
+      <p class="read" style="margin-bottom:1.1rem">How the two exhaust streams mix in the crossover, where pressure is lost and where the flow is most turbulent.</p>
+      <div class="g4">
+        <figure><img src="img/xp_stream.jpg" width="800" height="450" loading="lazy" alt="Streamlines"><figcaption>Streamlines</figcaption></figure>
+        <figure><img src="img/xp_press.jpg" width="1105" height="836" loading="lazy" alt="Pressure contour"><figcaption>Pressure</figcaption></figure>
+        <figure><img src="img/xp_path.jpg" width="641" height="438" loading="lazy" alt="Pathlines by particle"><figcaption>Pathlines</figcaption></figure>
+        <figure><img src="img/xp_tke.jpg" width="800" height="397" loading="lazy" alt="Pathlines by turbulent kinetic energy"><figcaption>Turbulent kinetic energy</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="block" id="p-hall">
+      <div class="blockhead">
+        <div class="tagrow"><span class="tag">Ansys Fluent</span><span class="tag">Discrete phase model</span></div>
+        <h2>How airborne droplets spread in a convention hall</h2>
+      </div>
+      <p class="read" style="margin-bottom:1.1rem">Droplets released inside the hall were tracked to see where the ventilation air carries them.</p>
+      <figure><img src="img/hall.jpg" width="800" height="338" loading="lazy" alt="Droplet pathlines through the hall"><figcaption>Droplet pathlines coloured by particle ID.</figcaption></figure>
+    </article>
+  </div>
+</section>
+
+<!-- =================================================================== EXTRACURRICULAR -->
+<section class="page" id="beyond" data-page>
+  <div class="wrap">
+    <div class="pagehead">
+      <h1>Extracurricular</h1>
+      <p>Photography, books and music.</p>
+    </div>
+
+    <div class="dark">
+      <div class="tagrow"><span class="tag" style="background:var(--night-2);color:var(--night-ink)">Street photography</span></div>
+      <h2 style="margin-top:.7rem">Through my lens</h2>
+      <p class="muted read" style="margin-top:.6rem">I shoot mostly black and white on the streets and railway lines of Bangladesh: fog, shadows and people passing through. I was Joint Secretary of the BUET Photographic Society and won second prize in the “Break the Circle” Season XII national photography contest.</p>
+      <div class="viewer" id="viewer">
+        <div class="stage">
+          <img id="vimg" src="img/ph06.jpg" width="1300" height="866" alt="People walking on railway tracks in thick fog">
+          <button type="button" class="nav prev" id="vprev" aria-label="Previous photo">&#8249;</button>
+          <button type="button" class="nav next" id="vnext" aria-label="Next photo">&#8250;</button>
+        </div>
+        <div class="vcap"><span id="vtitle">Fog on the line</span><span id="vcount">1 / 12</span></div>
+        <div class="strip" id="strip">
+          <button type="button" class="fs" data-i="0" aria-label="Show photo 1: Fog on the line"><img src="img/ph06_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="1" aria-label="Show photo 2: The window"><img src="img/ph03_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="2" aria-label="Show photo 3: Red cap, cold platform"><img src="img/ph09_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="3" aria-label="Show photo 4: The white path"><img src="img/ph04_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="4" aria-label="Show photo 5: Shadow family"><img src="img/ph07_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="5" aria-label="Show photo 6: Among the crows"><img src="img/ph11_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="6" aria-label="Show photo 7: Arches"><img src="img/ph01_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="7" aria-label="Show photo 8: Under the canopy"><img src="img/ph12_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="8" aria-label="Show photo 9: Three and a crow"><img src="img/ph02_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="9" aria-label="Show photo 10: Harvest"><img src="img/ph08_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="10" aria-label="Show photo 11: Passing by"><img src="img/ph10_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+          <button type="button" class="fs" data-i="11" aria-label="Show photo 12: Standing still"><img src="img/ph05_t.jpg" alt="" width="220" height="220" loading="lazy"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hobbies">
+      <div class="hob"><span class="ic">Reading</span><h3>Reader</h3><p class="muted">I am an avid reader. Books are how I switch off from meshes and residual plots.</p></div>
+      <div class="hob"><span class="ic">Music</span><h3>Metallica, always</h3><p class="muted">Metallica is my favourite band, and their records are usually playing while I work.</p></div>
+      <div class="hob"><span class="ic">Leadership</span><h3>Clubs and events</h3><p class="muted">Joint Secretary, BUET Photographic Society (2024) &middot; Vice President, BUET Animata (2024) &middot; Chair, event management team, ACS (2024)</p></div>
+    </div>
+
+    <h3 class="sub">Awards and honours</h3>
+    <div class="tbl">
+      <table>
+        <tbody>
+          <tr><td class="mono" style="width:6rem">2024</td><td>Second prize, poster presentation, BME Fest</td></tr>
+          <tr><td class="mono">2024</td><td>Second prize, “Break the Circle” Season XII national photography contest</td></tr>
+          <tr><td class="mono">2021</td><td>Dean’s List Award for excellent scholarly achievement, BUET (Level 1-2)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div style="color:var(--night-ink);font-family:var(--display);font-weight:700;font-size:1.1rem">Mollah Adib Aktab</div>
+      <div>Biomedical Engineer &middot; Dhaka, Bangladesh</div>
+    </div>
+    <div>
+      <span class="mail" id="mail">adib.aktab999@gmail.com</span><button class="copybtn" id="copy" type="button">Copy</button>
+      <div id="copynote" aria-live="polite" style="font-size:.82rem;min-height:1.2em"></div>
+    </div>
+    <div style="display:flex;gap:1.2rem;flex-wrap:wrap">
+      <a href="https://linkedin.com/in/adib-aktab-718275284" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Elmacho0007" target="_blank" rel="noopener">GitHub</a>
+      <span>+880 1305 628464</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden><button type="button" id="lbclose">Close</button><img id="lbimg" alt=""></div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var pages=[].slice.call(document.querySelectorAll('[data-page]'));
+  var links=[].slice.call(document.querySelectorAll('.tabs a'));
+  var ids=pages.map(function(p){return p.id;});
+  function show(id, jump){
+    if(ids.indexOf(id)<0) id='home';
+    pages.forEach(function(p){p.classList.toggle('on',p.id===id);});
+    links.forEach(function(a){ if(a.getAttribute('href')==='#'+id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');});
+    var t=jump&&document.getElementById(jump);
+    if(t){ t.scrollIntoView({block:'start'}); } else { window.scrollTo(0,0); }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a) return;
+    var id=a.getAttribute('href').slice(1); if(ids.indexOf(id)<0) return;
+    e.preventDefault();
+    try{ history.replaceState(null,'','#'+id);}catch(err){}
+    show(id,a.getAttribute('data-jump'));
+  });
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1));});
+  var h=location.hash.slice(1);
+  if(h && ids.indexOf(h)<0){ var el=document.getElementById(h); var pg=el&&el.closest('[data-page]'); if(pg){show(pg.id,h);} else show('home'); }
+  else show(h||'home');
+
+  // lightbox
+  var lb=document.getElementById('lb'), li=document.getElementById('lbimg');
+  function close(){lb.hidden=true; li.removeAttribute('src');}
+  document.addEventListener('click',function(e){
+    var im=e.target.closest('figure img, .paper img, .thumbs img, .stage img');
+    if(im && !e.target.closest('.fcard')){ li.src=im.currentSrc||im.src; li.alt=im.alt; lb.hidden=false; document.getElementById('lbclose').focus(); }
+  });
+  lb.addEventListener('click',function(e){ if(e.target!==li) close(); });
+  li.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !lb.hidden) close(); });
+
+
+  // photo viewer
+  var P=[
+    {src:"img/ph06.jpg",t:"Fog on the line",a:"People walking on railway tracks in thick fog"},
+    {src:"img/ph03.jpg",t:"The window",a:"A boy walking on a brick wall past an empty window frame"},
+    {src:"img/ph09.jpg",t:"Red cap, cold platform",a:"A man in a red cap on a railway platform"},
+    {src:"img/ph04.jpg",t:"The white path",a:"A woman walking alone down a path through white fields"},
+    {src:"img/ph07.jpg",t:"Shadow family",a:"Shadows of a family on a tiled wall"},
+    {src:"img/ph11.jpg",t:"Among the crows",a:"A boy walking among crows on a station platform"},
+    {src:"img/ph01.jpg",t:"Arches",a:"A building of arched balconies above dark trees"},
+    {src:"img/ph12.jpg",t:"Under the canopy",a:"A man walking beside freight wagons under a tree full of birds"},
+    {src:"img/ph02.jpg",t:"Three and a crow",a:"Three women in black walking along a brick wall as a crow takes off"},
+    {src:"img/ph08.jpg",t:"Harvest",a:"Workers in a field of flowers"},
+    {src:"img/ph10.jpg",t:"Passing by",a:"Shadows of people walking along a wall"},
+    {src:"img/ph05.jpg",t:"Standing still",a:"A man standing still beside a train in motion blur"}
+  ];
+  var vi=0, vimg=document.getElementById('vimg'), vt=document.getElementById('vtitle'), vc=document.getElementById('vcount');
+  var fss=[].slice.call(document.querySelectorAll('.fs'));
+  function go(i){
+    vi=(i+P.length)%P.length; var p=P[vi];
+    vimg.classList.add('fade');
+    setTimeout(function(){ vimg.src=p.src; vimg.alt=p.a; vimg.removeAttribute('width'); vimg.removeAttribute('height'); vimg.classList.remove('fade'); },150);
+    vt.textContent=p.t; vc.textContent=(vi+1)+' / '+P.length;
+    fss.forEach(function(b,j){ b.classList.toggle('on',j===vi); if(j===vi){ b.setAttribute('aria-current','true'); b.scrollIntoView({block:'nearest',inline:'center'}); } else b.removeAttribute('aria-current'); });
+  }
+  fss.forEach(function(b){ b.addEventListener('click',function(){ go(+b.getAttribute('data-i')); }); });
+  document.getElementById('vprev').addEventListener('click',function(){go(vi-1);});
+  document.getElementById('vnext').addEventListener('click',function(){go(vi+1);});
+  document.addEventListener('keydown',function(e){
+    if(!document.getElementById('beyond').classList.contains('on') || !lb.hidden) return;
+    if(e.key==='ArrowRight') go(vi+1); else if(e.key==='ArrowLeft') go(vi-1);
+  });
+  var tx=null; var st=document.querySelector('.stage');
+  st.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+  st.addEventListener('touchend',function(e){ if(tx===null) return; var d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>40) go(vi+(d<0?1:-1)); tx=null; });
+  fss[0].classList.add('on');
+
+  // copy email
+  var b=document.getElementById('copy'), n=document.getElementById('copynote'), m=document.getElementById('mail');
+  b.addEventListener('click',function(){
+    function sel(){var r=document.createRange();r.selectNodeContents(m);var s=getSelection();s.removeAllRanges();s.addRange(r);n.textContent='Selected. Press Ctrl+C to copy.';}
+    try{navigator.clipboard.writeText(m.textContent.trim()).then(function(){n.textContent='Email copied.';},sel);}catch(err){sel();}
+  });
+})();
+</script>
+
+</body>
+</html>
